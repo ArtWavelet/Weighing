@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WeighingManager</name>
+    </assembly>
+    <members>
+        <member name="M:WeighingManager.Controllers.ScalesController.Get(System.String,System.String,System.String,System.String)">
+            <summary>
+            Get a filtered summary of the stored measurements.
+            </summary>
+            <param name="truck_id">Optional parameter: Example: "trckEOO725"</param>
+            <param name="scale_id">Optional parameter: Example: "bsg_769"</param>
+            <param name="month">Optional parameter: Example: "Jan", "Fen", "Mar", ...</param>
+            <param name="unit">Optional parameter: Example: "kg", "pound", "ton"</param>
+        </member>
+        <member name="M:WeighingManager.Controllers.ScalesController.Post(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Import weight measurements in a json file.
+            </summary>
+            <param name="file">Required parameter: Example: file.json</param>
+        </member>
+    </members>
+</doc>
