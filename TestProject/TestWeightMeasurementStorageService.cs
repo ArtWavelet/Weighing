@@ -23,6 +23,42 @@ namespace TestProject
         }
 
         [TestMethod]
+        public void TestUpdateValue()
+        {
+            int expected = 800;
+            List<WeightMeasurement> measurements = new List<WeightMeasurement>();
+            var measurementStorageService = new WeightMeasurementStorageService();
+
+            measurements.Add(new WeightMeasurement()
+            {
+                ScaleId = "bsg_768",
+                TruckId = "trckOTK838",
+                Unit = WeightUnit.kg,
+                Weight = 1309,
+                Time = new System.DateTime(2021, 5, 18, 10, 12, 45)
+            });
+
+            measurementStorageService.AddRange(measurements);
+
+            measurements.Clear();
+
+            measurements.Add(new WeightMeasurement()
+            {
+                ScaleId = "bsg_768",
+                TruckId = "trckOTK838",
+                Unit = WeightUnit.kg,
+                Weight = 800,
+                Time = new System.DateTime(2021, 5, 18, 10, 12, 45)
+            });
+
+            measurementStorageService.AddRange(measurements);
+
+            WeighingSummary actual = measurementStorageService.GetFilteredMeasurements(null, null, "may");
+
+            Assert.AreEqual(expected, actual.Weight, $"Expected ${expected} measurements, but found ${actual}.\n");
+        }
+
+        [TestMethod]
         public void TestAllMayMeasurements()
         {
             decimal expected = 3689;
